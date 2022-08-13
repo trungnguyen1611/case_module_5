@@ -1,15 +1,23 @@
-import React, {forwardRef} from 'react';
+import React, {forwardRef, useState} from 'react';
 import './VideoCard.css';
 import TextTruncate from "react-text-truncate";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
-const VideoCard = forwardRef (({movie},ref) => {
+const VideoCard = forwardRef(({movie}, ref) => {
+    const [heart, setHeart] = useState(false)
+
+    const changeHeart=()=>{
+        setHeart(!heart)
+    }
+
     return (
         <div ref={ref} className='videoCard'>
             <img src={`${base_url}${movie.backdrop_path || movie.poster_path}`} alt=""/>
-
             <TextTruncate
                 line={1}
                 element="p"
@@ -24,6 +32,9 @@ const VideoCard = forwardRef (({movie},ref) => {
                 <ThumbUpIcon/>{" "}
                 {movie.vote_count}
             </p>
+            <span className='heart' onClick={changeHeart}>
+                {heart ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
+            </span>
         </div>
     );
 });

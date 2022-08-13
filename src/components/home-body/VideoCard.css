@@ -27,3 +27,13 @@
 .videoCard > h2 {
     padding-top: 10px;
 }
+
+.videoCard > .heart{
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+}
+
+.videoCard > .heart:hover{
+    cursor:pointer;
+}

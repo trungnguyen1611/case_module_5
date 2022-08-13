@@ -23,7 +23,7 @@
 }
 
 .header__icon--active > p {
-    display: inline-flex !important;
+    display: inline-flex;
 }
 
 .header__icon:hover > p {

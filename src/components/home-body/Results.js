@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './Results.css';
 import VideoCard from './VideoCard'
-import axios from './axios';
+import axios from '../../API/axios';
 import FlipMove from "react-flip-move";
 
 const Results = ({selectedOption}) => {
@@ -11,6 +11,7 @@ const Results = ({selectedOption}) => {
         async function fetchData(){
             const request = await axios.get(selectedOption)
             setMovies(request.data.results)
+            console.log(request)
             return request;
         }
 

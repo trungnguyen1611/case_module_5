@@ -1,4 +1,4 @@
-import React, {forwardRef, useState} from 'react';
+import React, {forwardRef, useState, useEffect} from 'react';
 import './VideoCard.css';
 import TextTruncate from "react-text-truncate";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
@@ -9,11 +9,23 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 const VideoCard = forwardRef(({movie}, ref) => {
-    const [heart, setHeart] = useState(false)
-
+    let currentWishLish = JSON.parse(localStorage.getItem('wishList')) || [];
+    let isInWishList = currentWishLish.findIndex(element => element.id === movie.id);
+    const [heart, setHeart] = useState(isInWishList !== -1 ? true : false)
     const changeHeart=()=>{
         setHeart(!heart)
     }
+
+    useEffect(() => {
+        let wishLish = JSON.parse(localStorage.getItem('wishList')) || []
+        if (heart) {
+            wishLish.push(movie)
+            localStorage.setItem('wishList', JSON.stringify(wishLish));
+        } else {
+            let newList = wishLish.filter(element => element.id !== movie.id);
+            localStorage.setItem('wishList', JSON.stringify(newList))
+        }
+    },[heart])
 
     return (
         <div ref={ref} className='videoCard'>

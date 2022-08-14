@@ -6,7 +6,7 @@ import LiveTvIcon from '@mui/icons-material/LiveTv';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 // import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import HomeIcon from '@mui/icons-material/Home';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {search} from '../../features/search';
 
@@ -40,9 +40,12 @@ const Header = () => {
                 <LiveTvIcon/>
                 <p>Verified</p>
             </div>
-            <div className="header__icon">
+            <div className="header__icon"
+            onClick={()=>{navigate('/collections')}}>
+            
                 <VideoLibraryIcon/>
                 <p>Collections</p>
+               
             </div>
             <div className="header__icon" onClick={()=>{setSearchActive(!searchActive)}}>
                 <SearchIcon/>

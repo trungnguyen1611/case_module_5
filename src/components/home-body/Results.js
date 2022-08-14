@@ -3,18 +3,22 @@ import './Results.css';
 import VideoCard from './VideoCard'
 import axios from '../../API/axios';
 import FlipMove from "react-flip-move";
+import { useSelector } from 'react-redux';
+
 
 const Results = ({selectedOption}) => {
     const [movies,setMovies]=useState([]);
+    const searchResult=useSelector(state=>state.search);
 
     useEffect(()=>{
-        async function fetchData(){
-            const request = await axios.get(selectedOption)
-            setMovies(request.data.results)
-            return request;
-        }
+        searchResult.value && axios.get(`/search/movie?api_key=736526407eddab33d53a2e42284a1d01&language=en-US&query=${searchResult.value}`)
+            .then(result=>{setMovies(result.data.results);
+                console.log(result.data)})
+    },[searchResult.value])
 
-        fetchData().then()
+    useEffect(()=>{
+            axios.get(selectedOption)
+                .then(result=>setMovies(result.data.results))
     },[selectedOption])
 
     return (

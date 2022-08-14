@@ -7,17 +7,17 @@ import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 // import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import HomeIcon from '@mui/icons-material/Home';
 import {useNavigate} from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {search} from '../../features/search';
 
 
 const Header = () => {
-    const searchResult=useSelector(state=>state.search);
-    console.log(searchResult)
     const dispatch=useDispatch();
     const navigate=useNavigate();
     const [searchActive,setSearchActive]=useState(false);
-    const [inputSearch, setInputSearch] = useState('')
+    const [inputSearch, setInputSearch] = useState('');
+
+
     const handleSearch=(e)=>{
         dispatch(search(e.target.value))
         setInputSearch(e.target.value)

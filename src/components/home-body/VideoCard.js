@@ -9,21 +9,24 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 const VideoCard = forwardRef(({movie}, ref) => {
-    let currentWishLish = JSON.parse(localStorage.getItem('wishList')) || [];
+    let currentWishLish = JSON.parse(localStorage.getItem('wishList')) || [{id:0}];
     let isInWishList = currentWishLish.findIndex(element => element.id === movie.id);
     const [heart, setHeart] = useState(isInWishList !== -1 ? true : false)
     const changeHeart=()=>{
         setHeart(!heart)
     }
-
+    
     useEffect(() => {
         let wishLish = JSON.parse(localStorage.getItem('wishList')) || []
-        if (heart) {
+        let isInWishList = wishLish.findIndex(element => element.id === movie.id);
+        if (heart && isInWishList === -1) {
             wishLish.push(movie)
             localStorage.setItem('wishList', JSON.stringify(wishLish));
-        } else {
+            console.log(`add items ${movie.id} in to localStorage`)
+        } else if (!heart && isInWishList !== -1){
             let newList = wishLish.filter(element => element.id !== movie.id);
             localStorage.setItem('wishList', JSON.stringify(newList))
+            console.log(`remove item ${movie.id} from localStorage`)
         }
     },[heart])
 

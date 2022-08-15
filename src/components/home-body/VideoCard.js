@@ -24,11 +24,9 @@ const VideoCard = forwardRef(({movie}, ref) => {
         if (heart && isInWishList === -1) {
             wishLish.push(movie)
             localStorage.setItem('wishList', JSON.stringify(wishLish));
-            console.log(`add items ${movie.id} in to localStorage`)
         } else if (!heart && isInWishList !== -1) {
             let newList = wishLish.filter(element => element.id !== movie.id);
             localStorage.setItem('wishList', JSON.stringify(newList))
-            console.log(`remove item ${movie.id} from localStorage`)
         }
     }, [heart])
 

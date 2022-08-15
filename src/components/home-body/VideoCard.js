@@ -12,6 +12,7 @@ const VideoCard = forwardRef(({movie}, ref) => {
     let currentWishLish = JSON.parse(localStorage.getItem('wishList')) || [{id:0}];
     let isInWishList = currentWishLish.findIndex(element => element.id === movie.id);
     const [heart, setHeart] = useState(isInWishList !== -1 ? true : false)
+
     const changeHeart=()=>{
         setHeart(!heart)
     }
@@ -31,7 +32,7 @@ const VideoCard = forwardRef(({movie}, ref) => {
     },[heart])
 
     return (
-        <div ref={ref} className='videoCard'>
+        <a href={`https://www.themoviedb.org/movie/${movie.id}`} ref={ref} target="_blank" className='videoCard'>
             <img src={`${base_url}${movie.backdrop_path || movie.poster_path}`} alt=""/>
             <TextTruncate
                 line={1}
@@ -50,7 +51,7 @@ const VideoCard = forwardRef(({movie}, ref) => {
             <span className='heart' onClick={changeHeart}>
                 {heart ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
             </span>
-        </div>
+        </a>
     );
 });
 

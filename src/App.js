@@ -12,7 +12,7 @@ function App() {
 
     return (
         <div className="app">
-                <Header/>
+                <Header setSelectedOption={setSelectedOption}/>
                 <Nav setSelectedOption={setSelectedOption}/>
             <Routes>
                 <Route path='/' element={<Results selectedOption={selectedOption}/>}/>

@@ -7,9 +7,9 @@
     overflow-x: scroll;
 }
 
-/* .header::-webkit-scrollbar{
+.header::-webkit-scrollbar{
     display: none;
-} */
+}
 
 .header {
     -ms-overflow-style: none;
@@ -55,6 +55,10 @@
 .header > img{
     object-fit: contain;
     height: 80px;
+}
+
+.header > img:hover{
+    cursor: pointer;
 }
 
 .sb__input{

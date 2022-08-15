@@ -1,0 +1,15 @@
+.card > .remove{
+    margin-left: 20px;
+}
+
+.card:hover > .remove{
+    transition: all 300ms ease;
+}
+
+.remove:hover{
+    transform: scale(1.2);
+}
+
+h1{
+    padding-top: 250px;
+}

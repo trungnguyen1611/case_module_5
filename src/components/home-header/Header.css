@@ -57,6 +57,10 @@
     height: 80px;
 }
 
+.header > img:hover{
+    cursor: pointer;
+}
+
 .sb__input{
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(27,27,27,0);

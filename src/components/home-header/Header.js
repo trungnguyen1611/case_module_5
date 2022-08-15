@@ -6,12 +6,13 @@ import LiveTvIcon from '@mui/icons-material/LiveTv';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 // import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import HomeIcon from '@mui/icons-material/Home';
-import {useNavigate, Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {search} from '../../features/search';
+import requests from "../../API/requests";
 
 
-const Header = () => {
+const Header = ({setSelectedOption}) => {
     const dispatch=useDispatch();
     const navigate=useNavigate();
     const [searchActive,setSearchActive]=useState(false);
@@ -32,7 +33,7 @@ const Header = () => {
                     <p>Home</p>
                 </div>
             </div>
-            <div className="header__icon">
+            <div className="header__icon" onClick={() => setSelectedOption(requests.fetchTrending)}>
                 <FlashOnIcon/>
                 <p>Trending</p>
             </div>
@@ -57,7 +58,7 @@ const Header = () => {
             {/*</div>*/}
             {searchActive && <input placeholder="Search..." value={inputSearch} className="sb__input" onChange={handleSearch} />}
 
-            <img src="https://press.hulu.com/wp-content/uploads/2020/02/hulu-white.png" alt=""/>
+            <img src="https://press.hulu.com/wp-content/uploads/2020/02/hulu-white.png" alt="" onClick={()=>navigate('/')}/>
         </div>
     );
 };

@@ -1,4 +1,5 @@
 .videoCard {
+    position: relative;
     color:white;
     width:500px;
     height:400px;
@@ -8,6 +9,8 @@
 
 .videoCard:hover{
     transform: scale(1.09);
+    transition: all 300ms ease;
+    cursor: pointer;
 }
 
 .videoCard > img {

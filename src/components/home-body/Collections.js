@@ -22,7 +22,7 @@ const Collections = () => {
     return (
         <div className='results'>
             {movies.length === 0 ?
-                <h1 style={{color: 'white', textAlign: "center"}}>Your Wish List is Empty....</h1> : ''}
+                <h1 style={{color: 'white', textAlign: "center"}}>Your Watch List is Empty....</h1> : ''}
             <FlipMove>
                 {movies.map((movie) => (
                     <div key={movie.id} className='card'>
